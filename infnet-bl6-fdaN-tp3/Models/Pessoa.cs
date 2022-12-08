@@ -85,6 +85,10 @@ namespace infnet_bl6_fdaN_tp3.Models
 
             return difDatas;
         }
+        public bool NomeCompletoPossui(string nomePesquisa)
+        {
+            return NomeCompleto.ToLowerInvariant().Contains(nomePesquisa.Trim().ToLowerInvariant());
+        }
         #endregion
     }
 }

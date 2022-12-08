@@ -20,9 +20,16 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // GET: Pessoas
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nomePesquisa)
         {
-            return View(await _context.Pessoa.ToListAsync());
+            var pessoas = await _context.Pessoa.ToListAsync();
+
+            if (!string.IsNullOrEmpty(nomePesquisa))
+            {
+                pessoas = pessoas.Where(pessoa => pessoa.NomeCompletoPossui(nomePesquisa)).ToList();
+            }
+
+            return View(pessoas);
         }
 
         // GET: Pessoas/Details/5

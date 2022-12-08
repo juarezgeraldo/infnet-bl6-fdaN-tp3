@@ -9,6 +9,12 @@
 <p>
     <a asp-action="Incluir">Incluir</a>
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Encontrar pessoa: @Html.TextBox("nomePesquisa")
+        <input type="submit" value="Pesquisar" /></p>
+}
 <table class="table">
     <thead>
         <tr>
