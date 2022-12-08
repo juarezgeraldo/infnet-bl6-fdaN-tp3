@@ -17,18 +17,21 @@ namespace infnet_bl6_fdaN_tp3.Models
             get { return _pessoaId; }
             set { _pessoaId = value; }
         }
+        [Display(Name = "Nome")]
         public string Nome
         {
             get { return _nome; }
             set { _nome = value; }
         }
 
+        [Display(Name = "Sobrenome")]
         public string Sobrenome
         {
             get { return _sobrenome; }
             set { _sobrenome = value; }
         }
 
+        [Display(Name = "Data de nascimento")]
         [DataType(DataType.Date)]
         public DateTime DataNascimento
         {
