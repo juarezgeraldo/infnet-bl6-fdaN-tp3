@@ -47,23 +47,22 @@ namespace infnet_bl6_fdaN_tp3.Models
         #endregion
 
         #region métodos
-        public Pessoa() { }
+        //public Pessoa() { }
 
-        public DateOnly ProximoAniversario()
+        public DateTime ProximoAniversario()
         {
-
-            DateTime dataProximoAniversario = new DateTime(DateTime.Now.Year, _dataNascimento.Month, _dataNascimento.Day, 0, 0, 0);
+            DateTime dataProximoAniversario = new(DateTime.Now.Year, DataNascimento.Month, DataNascimento.Day, 0, 0, 0);
             if (DateTime.Compare(dataProximoAniversario, DateTime.Now) < 0)
             {
                 dataProximoAniversario = dataProximoAniversario.AddYears(1);
             }
-            return DateOnly.FromDateTime(dataProximoAniversario);
+            return dataProximoAniversario;
         }
         public int CalculaDiasFaltantes()
         {
-            DateTime dataAtual = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
-            DateOnly dataAniversario = ProximoAniversario();
-            DateTime dataProximoAniversario = dataAniversario.ToDateTime(TimeOnly.Parse("00:00"));
+            DateTime dataAtual = new(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
+            DateTime dataAniversario = ProximoAniversario();
+            DateTime dataProximoAniversario = dataAniversario;
 
             if (dataAtual.Month == dataAniversario.Month &&
                 dataAtual.Day == dataAniversario.Day)
@@ -71,7 +70,7 @@ namespace infnet_bl6_fdaN_tp3.Models
                 return 0;
             }
             int difDatas = (int)dataAtual.Subtract(dataProximoAniversario).TotalDays;
-            if (difDatas < 0) { difDatas = difDatas * -1; }
+            if (difDatas < 0) { difDatas *= -1; }
 
             return difDatas;
         }
