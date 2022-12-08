@@ -26,7 +26,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // GET: Pessoas/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Exibir(int? id)
         {
             if (id == null || _context.Pessoa == null)
             {
@@ -44,7 +44,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // GET: Pessoas/Create
-        public IActionResult Create()
+        public IActionResult Incluir()
         {
             return View();
         }
@@ -54,7 +54,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PessoaId,Nome,Sobrenome,DataNascimento")] Pessoa pessoa)
+        public async Task<IActionResult> Incluir([Bind("PessoaId,Nome,Sobrenome,DataNascimento")] Pessoa pessoa)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // GET: Pessoas/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Alterar(int? id)
         {
             if (id == null || _context.Pessoa == null)
             {
@@ -86,7 +86,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PessoaId,Nome,Sobrenome,DataNascimento")] Pessoa pessoa)
+        public async Task<IActionResult> Alterar(int id, [Bind("PessoaId,Nome,Sobrenome,DataNascimento")] Pessoa pessoa)
         {
             if (id != pessoa.PessoaId)
             {
@@ -102,7 +102,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PessoaExists(pessoa.PessoaId))
+                    if (!ExistePessoa(pessoa.PessoaId))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // GET: Pessoas/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Excluir(int? id)
         {
             if (id == null || _context.Pessoa == null)
             {
@@ -135,9 +135,9 @@ namespace infnet_bl6_fdaN_tp3.Controllers
         }
 
         // POST: Pessoas/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Excluir")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ConfirmarExcluir(int id)
         {
             if (_context.Pessoa == null)
             {
@@ -153,7 +153,7 @@ namespace infnet_bl6_fdaN_tp3.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PessoaExists(int id)
+        private bool ExistePessoa(int id)
         {
             return _context.Pessoa.Any(e => e.PessoaId == id);
         }

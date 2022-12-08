@@ -1,18 +1,17 @@
 ﻿@model infnet_bl6_fdaN_tp3.Models.Pessoa
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Incluir";
 }
 
-<h1>Edit</h1>
+<h1>Incluir</h1>
 
 <h4>Pessoa</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Incluir">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PessoaId" />
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -28,15 +27,13 @@
                 <input asp-for="DataNascimento" class="form-control" />
                 <span asp-validation-for="DataNascimento" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Incluir" class="btn btn-primary" /> |
+                <a asp-action="Index">Voltar para a lista</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
