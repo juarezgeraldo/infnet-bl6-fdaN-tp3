@@ -13,35 +13,36 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sobrenome)
+                @Html.DisplayNameFor(model => model.NomeCompleto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiasFaltantes)
             </th>
             <th>Açoes</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sobrenome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                <a asp-action="Alterar" asp-route-id="@item.PessoaId">Alterar</a> |
-                <a asp-action="Exibir" asp-route-id="@item.PessoaId">Exibir</a> |
-                <a asp-action="Excluir" asp-route-id="@item.PessoaId">Excluir</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataNascimento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiasFaltantes)
+                </td>
+                <td>
+                    <a asp-action="Alterar" asp-route-id="@item.PessoaId">Alterar</a> |
+                    <a asp-action="Exibir" asp-route-id="@item.PessoaId">Exibir</a> |
+                    <a asp-action="Excluir" asp-route-id="@item.PessoaId">Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

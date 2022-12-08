@@ -38,18 +38,29 @@ namespace infnet_bl6_fdaN_tp3.Models
             get { return _dataNascimento; }
             set { _dataNascimento = value; }
         }
+        [Display(Name = "Nome completo")]
         public string NomeCompleto
         {
             get { return _nome + " " + _sobrenome; }
         }
+        [Display(Name = "Próximo aniversário")]
+        [DataType(DataType.Date)]
+        public DateTime ProximoAniversario
+        {
+            get { return ProximoAniversarioFuncao(); }
+        }
+        [Display(Name = "Dias para aniversário")]
+        public int DiasFaltantes
+        {
+            get { return CalculaDiasFaltantesFuncao(); }
+        }
 
-        public List<Pessoa> Pessoas = new List<Pessoa>();
         #endregion
 
         #region métodos
         //public Pessoa() { }
 
-        public DateTime ProximoAniversario()
+        public DateTime ProximoAniversarioFuncao()
         {
             DateTime dataProximoAniversario = new(DateTime.Now.Year, DataNascimento.Month, DataNascimento.Day, 0, 0, 0);
             if (DateTime.Compare(dataProximoAniversario, DateTime.Now) < 0)
@@ -58,10 +69,10 @@ namespace infnet_bl6_fdaN_tp3.Models
             }
             return dataProximoAniversario;
         }
-        public int CalculaDiasFaltantes()
+        public int CalculaDiasFaltantesFuncao()
         {
             DateTime dataAtual = new(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
-            DateTime dataAniversario = ProximoAniversario();
+            DateTime dataAniversario = ProximoAniversarioFuncao();
             DateTime dataProximoAniversario = dataAniversario;
 
             if (dataAtual.Month == dataAniversario.Month &&
